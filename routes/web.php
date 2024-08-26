@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\JobController;
+use App\Http\Controllers\LocationController;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\TestimonialController;
 use Illuminate\Support\Facades\Route;
@@ -10,21 +13,34 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 //public functions
-Route::get('/index',[PublicController::class,'index'])->name('public.index');
-Route::get('/about',[PublicController::class,'about'])->name('public.about');
-Route::get('/category',[PublicController::class,'category'])->name('public.category');
-Route::get('/contact',[PublicController::class,'contact'])->name('public.contact');
-Route::post('/contact',[PublicController::class,'contactpost'])->name('public.contactpost');
-Route::get('/job_detail/{id}',[PublicController::class,'job_detail'])->name('public.job_detail');
-Route::get('/job_list',[PublicController::class,'job_list'])->name('public.job_list');
-Route::get('/testimonial',[PublicController::class,'testimonial'])->name('public.testimonial');
-Route::post('/job_apply',[PublicController::class,'job_apply'])->name('job_apply');
-Route::put('/job_like/{job}',[PublicController::class,'like_job'])->name('job.like');
-Route::get('/categoryJobs/{category}',[PublicController::class,'categoryJobs'])->name('categoryJobs');
-Route::post('/search',[PublicController::class,'search'])->name('search');
+Route::get('index',[PublicController::class,'index'])->name('public.index');
+Route::get('about',[PublicController::class,'about'])->name('public.about');
+Route::get('category',[PublicController::class,'category'])->name('public.category');
+Route::get('contact',[PublicController::class,'contact'])->name('public.contact');
+Route::post('contact',[PublicController::class,'contactpost'])->name('public.contactpost');
+Route::get('job_detail/{id}',[PublicController::class,'job_detail'])->name('public.job_detail');
+Route::get('job_list',[PublicController::class,'job_list'])->name('public.job_list');
+Route::get('testimonial',[PublicController::class,'testimonial'])->name('public.testimonial');
+Route::post('job_apply',[PublicController::class,'job_apply'])->name('job_apply');
+Route::put('job_like/{job}',[PublicController::class,'like_job'])->name('job.like');
+Route::get('categoryJobs/{category}',[PublicController::class,'categoryJobs'])->name('categoryJobs');
+Route::post('search',[PublicController::class,'search'])->name('search');
+
+
 
 //admin functions
-
         Route::resource('job',JobController::class);
         Route::resource('testimonials',TestimonialController::class);
+        Route::resource('location',LocationController::class);
+        Route::resource('company',CompanyController::class);
+        Route::resource('categories',CategoryController::class);
+
+
+
+        //cmd php artisan tinker show the out in the termina
+
+
+        // laravel login
+        //multi language
