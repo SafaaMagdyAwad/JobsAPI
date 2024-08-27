@@ -32,11 +32,19 @@ Route::post('search',[PublicController::class,'search'])->name('search');
 
 
 //admin functions
+//mcamara
+Route::group(
+    [
+    'prefix' => LaravelLocalization::setLocale(),
+    'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
+    ], function(){
+
         Route::resource('job',JobController::class)->middleware('verified');
         Route::resource('testimonials',TestimonialController::class)->middleware('verified');
         Route::resource('location',LocationController::class)->middleware('verified');
         Route::resource('company',CompanyController::class)->middleware('verified');
         Route::resource('categories',CategoryController::class)->middleware('verified');
+   });
 
 
 

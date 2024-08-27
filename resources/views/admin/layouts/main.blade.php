@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="{{LaravelLocalization::getCurrentLocale()}}" dir="{{
+LaravelLocalization::getCurrentLocaleDirection() }}">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -25,6 +25,9 @@
     <div class="container my-5">
         {{-- //navbar --}}
         @include('admin.includes.navbar')
+        <a href="{{ LaravelLocalization::getLocalizedURL('en') }}" class="btn btn_light">{{ __('admin/layouts/main.english') }}</a>
+        <a href="{{ LaravelLocalization::getLocalizedURL('ar') }}" class="btn btn_light">{{ __('admin/layouts/main.arabic') }}</a>
+
         @yield('content')
 
     </div>

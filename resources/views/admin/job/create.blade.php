@@ -2,14 +2,14 @@
 @extends('admin.layouts.main')
 
 @section('title')
-Add Job
+{{ __('admin/job/all.add') }}
 @endsection
 
 @section('content')
 
 
 <div class="bg-light p-5 rounded">
-  <h2 class="fw-bold fs-2 mb-5 pb-2">Add Job</h2>
+  <h2 class="fw-bold fs-2 mb-5 pb-2">{{ __('admin/job/all.add') }}</h2>
   <form action="{{route('job.store')}}" method="post" class="px-md-5" enctype="multipart/form-data">
 
     @csrf
@@ -18,9 +18,9 @@ Add Job
       @error('title')
           <div class="alert alert-danger">{{ $message }}</div>
       @enderror
-      <label for="" class="form-label col-md-2 fw-bold text-md-end">title:</label>
+      <label for="" class="form-label col-md-2 fw-bold text-md-end">{{ __('admin/job/all.title') }}:</label>
       <div class="col-md-10">
-        <input type="text" placeholder="title" name="title" class="form-control py-2" value="{{old('title')}}" />
+        <input type="text" placeholder="{{ __('admin/job/all.title') }}" name="title" class="form-control py-2" value="{{old('title')}}" />
       </div>
     </div>
 
@@ -29,7 +29,7 @@ Add Job
       @error('image')
           <div class="alert alert-danger">{{ $message }}</div>
       @enderror
-      <label for="" class="form-label col-md-2 fw-bold text-md-end">Job image:</label>
+      <label for="" class="form-label col-md-2 fw-bold text-md-end">{{ __('admin/job/all.image') }}:</label>
       <div class="col-md-10">
         <input type="file"  name="image" class="form-control py-2" />
       </div>
@@ -40,9 +40,9 @@ Add Job
       @error('description')
           <div class="alert alert-danger">{{ $message }}</div>
       @enderror
-      <label for="" class="form-label col-md-2 fw-bold text-md-end">description:</label>
+      <label for="" class="form-label col-md-2 fw-bold text-md-end">{{ __('admin/job/all.description') }}:</label>
       <div class="col-md-10">
-          <textarea name="description" placeholder="Enter description" cols="30" rows="5"class="form-control py-2"  >{{old('description')}}</textarea>
+          <textarea name="description" placeholder="{{ __('admin/job/all.description') }}" cols="30" rows="5"class="form-control py-2"  >{{old('description')}}</textarea>
       </div>
     </div>
 
@@ -51,9 +51,9 @@ Add Job
       @error('qualification')
           <div class="alert alert-danger">{{ $message }}</div>
       @enderror
-      <label for="" class="form-label col-md-2 fw-bold text-md-end">qualification:</label>
+      <label for="" class="form-label col-md-2 fw-bold text-md-end">{{ __('admin/job/all.qualification') }}:</label>
       <div class="col-md-10">
-          <textarea name="qualification" placeholder="Enter qualification" cols="30" rows="5"class="form-control py-2"  >{{old('qualification')}}</textarea>
+          <textarea name="qualification" placeholder="{{ __('admin/job/all.qualification') }}" cols="30" rows="5"class="form-control py-2"  >{{old('qualification')}}</textarea>
       </div>
     </div>
 
@@ -62,9 +62,9 @@ Add Job
       @error('responsability')
           <div class="alert alert-danger">{{ $message }}</div>
       @enderror
-      <label for="" class="form-label col-md-2 fw-bold text-md-end">responsability:</label>
+      <label for="" class="form-label col-md-2 fw-bold text-md-end">{{ __('admin/job/all.responsability') }}:</label>
       <div class="col-md-10">
-          <textarea name="responsability" placeholder="Enter responsability" cols="30" rows="5"class="form-control py-2"  >{{old('responsability')}}</textarea>
+          <textarea name="responsability" placeholder="{{ __('admin/job/all.responsability') }}" cols="30" rows="5"class="form-control py-2"  >{{old('responsability')}}</textarea>
       </div>
     </div>
 
@@ -73,11 +73,11 @@ Add Job
       @error('job_nature')
           <div class="alert alert-danger">{{ $message }}</div>
       @enderror
-      <label for="" class="form-label col-md-2 fw-bold text-md-end">job_nature:</label>
+      <label for="" class="form-label col-md-2 fw-bold text-md-end">{{ __('admin/job/all.job_nature') }}:</label>
       <div class="col-md-10">
           <select name="job_nature" class="form-control">
-              <option value="Full Time" @selected(old('job_nature') == "Full Time")>Full Time</option>
-              <option value="Part Time" @selected(old('job_nature') == "Part Time")>Part Time</option>
+              <option value="Full Time" @selected(old('job_nature') == "Full Time")>{{ __('admin/job/all.FullTime') }}</option>
+              <option value="Part Time" @selected(old('job_nature') == "Part Time")>{{ __('admin/job/all.PartTime') }}</option>
           </select>
       </div>
     </div>
@@ -89,7 +89,7 @@ Add Job
       @error('vacancy')
           <div class="alert alert-danger">{{ $message }}</div>
       @enderror
-      <label for="" class="form-label col-md-2 fw-bold text-md-end">vacancy:</label>
+      <label for="" class="form-label col-md-2 fw-bold text-md-end">{{ __('admin/job/all.vacancy') }}:</label>
       <div class="col-md-10">
               <input type="number" name="vacancy" step=1 class="form-controll" value="{{ old('vacancy') }}">
       </div>
@@ -99,7 +99,7 @@ Add Job
       @error('salary_from')
           <div class="alert alert-danger">{{ $message }}</div>
       @enderror
-      <label for="" class="form-label col-md-2 fw-bold text-md-end">salary_from:</label>
+      <label for="" class="form-label col-md-2 fw-bold text-md-end">{{ __('admin/job/all.salary_from') }}:</label>
       <div class="col-md-10">
               <input type="number" name="salary_from" step=0.1 class="form-controll" value="{{ old('salary_from') }}">
       </div>
@@ -110,7 +110,7 @@ Add Job
       @error('salary_to')
           <div class="alert alert-danger">{{ $message }}</div>
       @enderror
-      <label for="" class="form-label col-md-2 fw-bold text-md-end">salary_to:</label>
+      <label for="" class="form-label col-md-2 fw-bold text-md-end">{{ __('admin/job/all.salary_to') }}:</label>
       <div class="col-md-10">
               <input type="number" name="salary_to" step=0.1 class="form-controll" value="{{ old('salary_to') }}">
       </div>
@@ -121,7 +121,7 @@ Add Job
       @error('date_line')
           <div class="alert alert-danger">{{ $message }}</div>
       @enderror
-      <label for="" class="form-label col-md-2 fw-bold text-md-end">date_line:</label>
+      <label for="" class="form-label col-md-2 fw-bold text-md-end">{{ __('admin/job/all.date_line') }}:</label>
       <div class="col-md-10">
               <input type="date" name="date_line"  class="form-controll" value="{{ old('date_line') }}">
       </div>
@@ -130,7 +130,7 @@ Add Job
     <hr>
     <div class="form-group mb-3 row">
 
-      <label for="" class="form-label col-md-2 fw-bold text-md-end">published:</label>
+      <label for="" class="form-label col-md-2 fw-bold text-md-end">{{ __('admin/job/all.published') }}:</label>
       <div class="col-md-10">
               <input type="checkbox" name="published"  class="form-controll"  @checked(old('published'))>
       </div>
@@ -141,7 +141,7 @@ Add Job
       @error('category_id')
           <div class="alert alert-danger">{{ $message }}</div>
       @enderror
-      <label for="" class="form-label col-md-2 fw-bold text-md-end">category:</label>
+      <label for="" class="form-label col-md-2 fw-bold text-md-end">{{ __('admin/job/all.category') }}:</label>
       <div class="col-md-10">
           <select name="category_id" class="form-control">
               @foreach ($categories as $category)
@@ -156,7 +156,7 @@ Add Job
       @error('location_id')
           <div class="alert alert-danger">{{ $message }}</div>
       @enderror
-      <label for="" class="form-label col-md-2 fw-bold text-md-end">location:</label>
+      <label for="" class="form-label col-md-2 fw-bold text-md-end">{{ __('admin/job/all.location') }}:</label>
       <div class="col-md-10">
           <select name="location_id" class="form-control">
               @foreach ($locations as $location)
@@ -171,7 +171,7 @@ Add Job
       @error('company_id')
           <div class="alert alert-danger">{{ $message }}</div>
       @enderror
-      <label for="" class="form-label col-md-2 fw-bold text-md-end">company:</label>
+      <label for="" class="form-label col-md-2 fw-bold text-md-end">{{ __('admin/job/all.company') }}:</label>
       <div class="col-md-10">
           <select name="company_id" class="form-control">
               @foreach ($companies as $company)
@@ -183,7 +183,7 @@ Add Job
 
     <div class="text-md-end">
       <button class="btn mt-4 btn-secondary text-white fs-5 fw-bold border-0 py-2 px-md-5">
-        Add Job
+        {{ __('admin/job/all.add') }}
       </button>
     </div>
   </form>
