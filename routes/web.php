@@ -31,11 +31,11 @@ Route::post('search',[PublicController::class,'search'])->name('search');
 
 
 //admin functions
-        Route::resource('job',JobController::class);
-        Route::resource('testimonials',TestimonialController::class);
-        Route::resource('location',LocationController::class);
-        Route::resource('company',CompanyController::class);
-        Route::resource('categories',CategoryController::class);
+        Route::resource('job',JobController::class)->middleware('verified');
+        Route::resource('testimonials',TestimonialController::class)->middleware('verified');
+        Route::resource('location',LocationController::class)->middleware('verified');
+        Route::resource('company',CompanyController::class)->middleware('verified');
+        Route::resource('categories',CategoryController::class)->middleware('verified');
 
 
 
@@ -44,3 +44,7 @@ Route::post('search',[PublicController::class,'search'])->name('search');
 
         // laravel login
         //multi language
+
+Auth::routes(['verify'=>true]);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware('verified')->name('home');
