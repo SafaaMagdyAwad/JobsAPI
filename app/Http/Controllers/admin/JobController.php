@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Common;
 use App\Models\Category;
 use App\Models\Company;
@@ -12,7 +13,7 @@ use Illuminate\Http\Request;
 class JobController extends Controller
 {
     use Common;
-    
+
     /**
      * Display a listing of the resource.
      */

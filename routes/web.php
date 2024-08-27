@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\CompanyController;
-use App\Http\Controllers\JobController;
-use App\Http\Controllers\LocationController;
-use App\Http\Controllers\PublicController;
-use App\Http\Controllers\TestimonialController;
+
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\CompanyController;
+use App\Http\Controllers\Admin\JobController;
+use App\Http\Controllers\Admin\LocationController;
+use App\Http\Controllers\Admin\TestimonialController;
+use App\Http\Controllers\Public\PublicController;
 use Illuminate\Support\Facades\Route;
 
 

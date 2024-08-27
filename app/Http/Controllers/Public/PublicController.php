@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Public;
 
+use App\Http\Controllers\Controller;
 use App\Common;
 use App\Mail\ContactMail;
 use App\Models\Category;
@@ -66,7 +67,7 @@ class PublicController extends Controller
         return view('public.testimonial',compact('testimonials'));
     }
     public function search(Request $request){
-       
+
         $jobs=Job::where('title',$request->Keyword)->orWhere('category_id',$request->category_id)->orWhere('location_id',$request->location_id)->get();
         // dd($jobs);
         return view('public.searched',compact('jobs'));
@@ -99,6 +100,6 @@ class PublicController extends Controller
         return view('public.category_job',compact('jobs'));
     }
 
-    
+
 
 }

@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Common;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
@@ -57,7 +58,7 @@ class TestimonialController extends Controller
     public function edit(Testimonial $testimonial)
     {
         return view('admin.testimonial.edit',compact('testimonial'));
-        
+
     }
 
     /**
