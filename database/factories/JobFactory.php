@@ -17,7 +17,7 @@ class JobFactory extends Factory
     public function definition(): array
     {
         return [
-            'title'=>fake()->word(),
+            'title'=>fake()->jobTitle(),
             'image'=> basename(fake()->image(public_path('assets/images/jobs'))),
             'description'=>fake()->text(),
             'responsability'=>fake()->text(),
