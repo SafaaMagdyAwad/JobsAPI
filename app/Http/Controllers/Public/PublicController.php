@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Public;
 use App\Http\Controllers\Controller;
 use App\Common;
 use App\Mail\ContactMail;
+use App\Mail\JobApplyMail;
 use App\Models\Category;
+use App\Models\Contact;
 use App\Models\Job;
 use App\Models\JobApplication;
 use App\Models\Location;
@@ -47,8 +49,8 @@ class PublicController extends Controller
             'subject' => 'required|string',
             'message' => 'required|string',
         ]);
-        Mail::to('Jobs@site.com')->send(new ContactMail($data)); //'R6LARAVEL@site.com' is the sender
-
+        Contact::create($data);
+        Mail::to('Jobs@site.com')->send(new ContactMail($data)); //'Jobs@site.com' is the sender
         return redirect()->route('public.index');
     }
     public function job_detail(string $id){
@@ -82,7 +84,11 @@ class PublicController extends Controller
             'job_id' => 'required|exists:jobs,id',
         ]);
         $data['cv']=$this->uploadFile($request->cv,"assets/cv");
-        JobApplication::create($data);
+
+        JobApplication::create($data);//stores in data bade
+        $data['job']= Job::findOrFail($data['job_id'])->title;// finding the job title
+        Mail::to('Jobs@site.com')->send(new JobApplyMail($data)); //'Jobs@site.com' is the sender
+
         return redirect()->route('public.index');
 
     }
