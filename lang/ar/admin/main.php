@@ -16,5 +16,6 @@ return [
     'add_company' => 'اضافه شركه',
     'english' => 'الانجليزيه',
     'arabic' => 'العربيه',
+    'jobApplications' => 'طلبات التوظيف',
 
 ];

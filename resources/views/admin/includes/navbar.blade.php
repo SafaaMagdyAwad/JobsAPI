@@ -43,6 +43,12 @@
                     <a href="{{route('company.index')}}" class="dropdown-item">{{ __('admin/main.companies') }}</a>
                     <a href="{{route('company.create')}}" class="dropdown-item"> {{ __('admin/main.add_company') }}</a>
                 </div>
+
+            </div>
+            <div class="nav-item dropdown">
+                <a  class="nav-link " href="{{ route('jobApplication.index') }}" >{{ __('admin/main.jobApplications') }}</a>
+
+
             </div>
 
         </div>

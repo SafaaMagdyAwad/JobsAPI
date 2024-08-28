@@ -3,6 +3,7 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CompanyController;
+use App\Http\Controllers\Admin\JobApplicationController;
 use App\Http\Controllers\Admin\JobController;
 use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\Admin\TestimonialController;
@@ -44,6 +45,7 @@ Route::group(
         Route::resource('location',LocationController::class)->middleware('verified');
         Route::resource('company',CompanyController::class)->middleware('verified');
         Route::resource('categories',CategoryController::class)->middleware('verified');
+        Route::resource('jobApplication',JobApplicationController::class)->middleware('verified');
    });
 
 

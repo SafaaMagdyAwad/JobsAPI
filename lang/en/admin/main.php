@@ -15,6 +15,7 @@ return [
     'add_company' => 'Add company',
     'english' => 'English',
     'arabic' => 'Arabic',
+    'jobApplications' => 'Job Applications',
 
 
 ];
