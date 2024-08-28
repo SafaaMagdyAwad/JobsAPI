@@ -1,8 +1,8 @@
 <!-- Job Detail Start -->
-<div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+<div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s" >
     <div class="container">
-        <div class="row gy-5 gx-4">
-            <div class="col-lg-8">
+        <div class="row gy-5 gx-4"  >
+            <div class="col-12 col-md-6 col-lg-4">
                 <div class="d-flex align-items-center mb-5">
                     <img class="flex-shrink-0 img-fluid border rounded" src="{{ asset('assets/images/jobs/'.$job->image) }}" alt="" style="width: 80px; height: 80px;">
                     <div class="text-start ps-4">

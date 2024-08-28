@@ -35,7 +35,7 @@
       <form id="" action="{{ route('location.destroy', $location->id) }}" method="POST" >
        @csrf
       @method('DELETE')
-        <button type="submit" class="btn btn-light"> {{ __('admin/location.delete') }}</button>
+        <button type="submit" class="btn btn-light"  onclick="return confirm('{{ __('admin/jobApplication.deleteMessage') }}')"> {{ __('admin/location.delete') }}</button>
       </form>
       </td>
 

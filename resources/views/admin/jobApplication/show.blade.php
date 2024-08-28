@@ -9,11 +9,21 @@
 
 <div class="bg-light p-5 rounded">
   <div class="card bg-light border-0">
+    <td>
+        <div style="width: 100%; height: auto; overflow-x: auto;">
+          <object
+            data="{{ asset('assets/cv/'.$jobApplication['cv']) }}"
+            type="application/pdf"
+            style="width: 100%; height: 100%; min-height: 300px;">
+            <p>{{ __('admin/jobApplication.cv_undowinloaded') }}</p>
+          </object>
+        </div>
+      </td>
     <div class="row justify-content-center">
 
       <div class="col-lg-8 col-md-6 col-12 card-body">
         <div class="mb-4 text-center py-2">
-          <h2 class="fw-bold bg-light card-header">{{ __('admin/jobApplication.name') }}::{{$jobApplication->name}}</h2>
+          <h2 class="fw-bold bg-light card-header">{{ __('admin/jobApplication.name') }}  ::  {{$jobApplication->name}}</h2>
         </div>
         <div class="mb-4 text-center py-2">
           <p class="fw-bold bg-light card-header">{{ __('admin/jobApplication.email') }} ::  {{$jobApplication->email}}</p>

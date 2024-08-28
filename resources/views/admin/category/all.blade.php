@@ -34,7 +34,7 @@
       <form id="" action="{{ route('categories.destroy', $category) }}" method="POST" >
        @csrf
       @method('DELETE')
-        <button type="submit" class="btn btn-light"> {{ __('admin/category.delete') }}</button>
+        <button type="submit" class="btn btn-light"  onclick="return confirm('{{ __('admin/jobApplication.deleteMessage') }}')"> {{ __('admin/category.delete') }}</button>
       </form>
       </td>
 

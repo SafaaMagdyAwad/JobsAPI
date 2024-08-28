@@ -41,7 +41,7 @@
       <form id="" action="{{ route('testimonials.destroy', $testimonial->id) }}" method="POST" >
        @csrf
       @method('DELETE')
-        <button type="submit" class="btn btn-light"> {{ __('admin/testimonial.delete') }}</button>
+        <button type="submit" class="btn btn-light"  onclick="return confirm('{{ __('admin/jobApplication.deleteMessage') }}')"> {{ __('admin/testimonial.delete') }}</button>
       </form>
       </td>
 
