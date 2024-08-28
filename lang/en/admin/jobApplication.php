@@ -14,4 +14,4 @@ return [
     'backtoall' => 'Back to All Job Appications',
     'deleteMessage' => 'Are you sure you want to Delete?',
 ];
-//
+
