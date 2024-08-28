@@ -8,7 +8,7 @@
 
 <a href="{{ route('location.create') }}" class="btn btn-dark"> Create location</a>
 
-<div class="bg-light p-5 rounded">
+<div class="bg-light p-5 rounded" style="overflow-x:auto;">
 <h2 class="fw-bold fs-2 mb-5 pb-2">{{ __('admin/location.all') }}</h2>
 <table class="table table-hover">
   <thead>

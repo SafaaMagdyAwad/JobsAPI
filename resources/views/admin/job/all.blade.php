@@ -9,7 +9,7 @@
 
 
 <a href="{{ route('job.create') }}" class="btn btn-dark">{{ __('admin/job.add') }}</a>
-<div class="bg-light p-5 rounded">
+<div class="bg-light p-5 rounded" style="overflow-x:auto;">
 <h2 class="fw-bold fs-2 mb-5 pb-2">{{ __('admin/job.title') }}</h2>
 <table class="table table-hover">
   <thead>

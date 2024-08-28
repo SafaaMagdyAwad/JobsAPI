@@ -9,7 +9,7 @@
 
 
 
-<div class="bg-light p-5 rounded">
+<div class="bg-light p-5 rounded" style="overflow-x:auto;">
 <h2 class="fw-bold fs-2 mb-5 pb-2">{{ __('admin/jobApplication.all') }}</h2>
 <table class="table table-hover">
   <thead>
