@@ -1,7 +1,7 @@
 @extends('admin.layouts.main')
 
 @section('title')
-All Locations
+{{ __('admin/location.all') }}
 @endsection
 
 @section('content')
@@ -9,16 +9,16 @@ All Locations
 <a href="{{ route('location.create') }}" class="btn btn-dark"> Create location</a>
 
 <div class="bg-light p-5 rounded">
-<h2 class="fw-bold fs-2 mb-5 pb-2">All locations</h2>
+<h2 class="fw-bold fs-2 mb-5 pb-2">{{ __('admin/location.all') }}</h2>
 <table class="table table-hover">
   <thead>
     <tr class="table-dark">
       <th scope="col">#</th>
-      <th scope="col">Location</th>
+      <th scope="col">{{ __('admin/location.location') }}</th>
 
-      <th scope="col">show</th>
-      <th scope="col">Edit</th>
-      <th scope="col">Delete</th>
+      <th scope="col">{{ __('admin/location.show') }}</th>
+      <th scope="col">{{ __('admin/location.edit') }}</th>
+      <th scope="col">{{ __('admin/location.delete') }}</th>
 
 
     </tr>
@@ -28,14 +28,14 @@ All Locations
     <tr>
       <td scope="row">{{$location['id']}}</td>
       <td>{{$location['location']}}</td>
-      <td><a href="{{route('location.show',$location['id'])}}" class="btn btn-light">Details</a></td>
-      <td><a href="{{route('location.edit',$location['id'])}}" class="btn btn-light">Edit</a></td>
+      <td><a href="{{route('location.show',$location['id'])}}" class="btn btn-light">{{ __('admin/location.show') }}</a></td>
+      <td><a href="{{route('location.edit',$location['id'])}}" class="btn btn-light">{{ __('admin/location.edit') }}</a></td>
 
       <td>
       <form id="" action="{{ route('location.destroy', $location->id) }}" method="POST" >
        @csrf
       @method('DELETE')
-        <button type="submit" class="btn btn-light"> Delete Location</button>
+        <button type="submit" class="btn btn-light"> {{ __('admin/location.delete') }}</button>
       </form>
       </td>
 

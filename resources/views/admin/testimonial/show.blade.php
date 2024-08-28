@@ -2,7 +2,7 @@
 @extends('admin.layouts.main')
 
 @section('title')
-All Locations
+{{ __('admin/testimonial.show') }}
 @endsection
 
 @section('content')
@@ -22,19 +22,19 @@ All Locations
         </div>
         <div class="mb-4">
           <p class="card-text">
-            <span class="fw-bold">Job:</span> {{$testimonial->job}}
+            <span class="fw-bold">{{ __('admin/testimonial.job') }}:</span> {{$testimonial->job}}
           </p>
         </div>
         <div class="mb-4">
           <p class="card-text">
-            <span class="fw-bold">message:</span> {{$testimonial->message}}
+            <span class="fw-bold">{{ __('admin/testimonial.message') }}:</span> {{$testimonial->message}}
           </p>
         </div>
 
 
         <div class="text-md-end">
           <a href="{{route('testimonials.index')}}" class="btn mt-4 btn-primary text-white fs-5 fw-bold border-0 py-2 px-md-5">
-            Back to All testimonials
+            {{ __('admin/testimonial.backtoall') }}
           </a>
         </div>
       </div>

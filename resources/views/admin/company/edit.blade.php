@@ -2,14 +2,14 @@
 @extends('admin.layouts.main')
 
 @section('title')
-Edit Company
+{{ __('admin/company.edit') }}
 @endsection
 
 @section('content')
 
 
 <div class="bg-light p-5 rounded">
-  <h2 class="fw-bold fs-2 mb-5 pb-2">edit company</h2>
+  <h2 class="fw-bold fs-2 mb-5 pb-2">{{ __('admin/company.edit') }}</h2>
   <form action="{{route('company.update',[$company['id']])}}" method="post" class="px-md-5" >
     @csrf
     @method('put')
@@ -17,16 +17,16 @@ Edit Company
       @error('company')
           <div class="alert alert-danger">{{ $message }}</div>
       @enderror
-      <label for="" class="form-label col-md-2 fw-bold text-md-end">company:</label>
+      <label for="" class="form-label col-md-2 fw-bold text-md-end">{{ __('admin/company.company') }}:</label>
       <div class="col-md-10">
-        <input type="text" placeholder="company" name="company" class="form-control py-2" value="{{old('company',$company->company)}}" />
+        <input type="text" placeholder="{{ __('admin/company.company') }}" name="company" class="form-control py-2" value="{{old('company',$company->company)}}" />
       </div>
     </div>
 
 
     <div class="text-md-end">
       <button class="btn mt-4 btn-secondary text-white fs-5 fw-bold border-0 py-2 px-md-5">
-        Edit company
+        {{ __('admin/company.edit') }}
       </button>
     </div>
   </form>

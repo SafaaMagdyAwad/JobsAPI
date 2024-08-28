@@ -2,7 +2,7 @@
 @extends('admin.layouts.main')
 
 @section('title')
-Show Job
+{{ __('admin/job.show') }}
 @endsection
 
 @section('content')
@@ -21,63 +21,63 @@ Show Job
         </div>
         <div class="mb-4">
           <p class="card-text">
-            <span class="fw-bold">Job Nature:</span> {{$job->job_nature}}
+            <span class="fw-bold">{{ __('admin/job.job_nature') }}:</span> {{$job->job_nature}}
           </p>
         </div>
         <div class="mb-4">
           <p class="card-text">
-            <span class="fw-bold">Vacancy:</span> {{$job->vacancy}}
+            <span class="fw-bold">{{ __('admin/job.vacancy') }}:</span> {{$job->vacancy}}
           </p>
         </div>
         <div class="mb-4">
           <p class="card-text">
-            <span class="fw-bold">salary:</span> {{$job->salary_from}}$ : {{$job->salary_to}}$
+            <span class="fw-bold">{{ __('admin/job.salary') }}:</span> {{$job->salary_from}}$ : {{$job->salary_to}}$
           </p>
         </div>
         <div class="mb-4">
           <p class="card-text">
-            <span class="fw-bold">description:</span> {{$job->description}}
+            <span class="fw-bold">{{ __('admin/job.description') }}:</span> {{$job->description}}
           </p>
         </div>
         <div class="mb-4">
           <p class="card-text">
-            <span class="fw-bold">responsability:</span> {{$job->responsability}}
+            <span class="fw-bold">{{ __('admin/job.responsability') }}:</span> {{$job->responsability}}
           </p>
         </div>
         <div class="mb-4">
           <p class="card-text">
-            <span class="fw-bold">qualification:</span> {{$job->description}}
+            <span class="fw-bold">{{ __('admin/job.qualification') }}:</span> {{$job->description}}
           </p>
         </div>
         <div class="mb-4">
           <p class="card-text">
-            <span class="fw-bold">date_line:</span> {{$job->date_line}}
+            <span class="fw-bold">{{ __('admin/job.date_line') }}:</span> {{$job->date_line}}
           </p>
         </div>
         <div class="mb-4">
           <p class="card-text">
-            <span class="fw-bold">location:</span> {{$job->location->location}}
+            <span class="fw-bold">{{ __('admin/job.location') }}:</span> {{$job->location->location}}
           </p>
         </div>
         <div class="mb-4">
           <p class="card-text">
-            <span class="fw-bold">Category:</span> {{$job->category->category}}
+            <span class="fw-bold">{{ __('admin/job.category') }}:</span> {{$job->category->category}}
           </p>
         </div>
         <div class="mb-4">
           <p class="card-text">
-            <span class="fw-bold">company:</span> {{$job->company->company}}
+            <span class="fw-bold">{{ __('admin/job.company') }}:</span> {{$job->company->company}}
           </p>
         </div>
         <div class="mb-4">
           <p class="card-text">
-            <span class="fw-bold">Published:</span> {{$job->published?"YES":"NO"}}
+            <span class="fw-bold">{{ __('admin/job.published') }}:</span> {{$job->published?"YES":"NO"}}
           </p>
         </div>
 
         <div class="text-md-end">
           <a href="{{route('job.index')}}" class="btn mt-4 btn-primary text-white fs-5 fw-bold border-0 py-2 px-md-5">
-            Back to All Jobs
+            {{ __('admin/job.backtoall') }}
           </a>
         </div>
       </div>

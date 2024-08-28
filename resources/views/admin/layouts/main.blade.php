@@ -25,8 +25,8 @@ LaravelLocalization::getCurrentLocaleDirection() }}">
     <div class="container my-5">
         {{-- //navbar --}}
         @include('admin.includes.navbar')
-        <a href="{{ LaravelLocalization::getLocalizedURL('en') }}" class="btn btn_light">{{ __('admin/layouts/main.english') }}</a>
-        <a href="{{ LaravelLocalization::getLocalizedURL('ar') }}" class="btn btn_light">{{ __('admin/layouts/main.arabic') }}</a>
+        <a href="{{ LaravelLocalization::getLocalizedURL('en') }}" class="btn btn_light">{{ __('admin/main.english') }}</a>
+        <a href="{{ LaravelLocalization::getLocalizedURL('ar') }}" class="btn btn_light">{{ __('admin/main.arabic') }}</a>
 
         @yield('content')
 
