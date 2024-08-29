@@ -24,6 +24,7 @@ Route::get('contact',[PublicController::class,'contact'])->name('public.contact'
 Route::post('contact',[PublicController::class,'contactpost'])->name('public.contactpost');
 Route::get('job_detail/{id}',[PublicController::class,'job_detail'])->name('public.job_detail');
 Route::get('job_list',[PublicController::class,'job_list'])->name('public.job_list');
+Route::get('jobs',[PublicController::class,'jobs'])->name('public.jobs');
 Route::get('testimonial',[PublicController::class,'testimonial'])->name('public.testimonial');
 Route::post('job_apply',[PublicController::class,'job_apply'])->name('job_apply');
 Route::put('job_like/{job}',[PublicController::class,'like_job'])->name('job.like');

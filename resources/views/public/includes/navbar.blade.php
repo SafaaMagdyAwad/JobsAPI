@@ -14,7 +14,8 @@
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Jobs</a>
                 <div class="dropdown-menu rounded-0 m-0">
                     <a href="{{route('public.job_list')}}" class="dropdown-item">Job List</a>
-                    
+                    <a href="{{route('public.jobs')}}" class="dropdown-item">Jobs & categories</a>
+
                 </div>
             </div>
             <div class="nav-item dropdown">
@@ -22,7 +23,7 @@
                 <div class="dropdown-menu rounded-0 m-0">
                     <a href="{{route('public.category')}}" class="dropdown-item">Job Category</a>
                     <a href="{{route('public.testimonial')}}" class="dropdown-item">Testimonial</a>
-                    
+
                 </div>
             </div>
             <a href="{{route('public.contact')}}" class="nav-item nav-link">Contact</a>

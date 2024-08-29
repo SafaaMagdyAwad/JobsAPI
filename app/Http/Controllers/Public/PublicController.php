@@ -19,12 +19,14 @@ class PublicController extends Controller
 {
     //
     use Common;
+
+
     public function index(){
         $locations=Location::all();
         $categories=Category::all();
-        $full_time=Job::with('company','category','location')->where('job_nature','Full Time')->get();
-        $part_time=Job::with('company','category','location')->where('job_nature','Part Time')->get();
-        $featured=Job::with('company','category','location')->latest('like')->limit(5)->get();
+        $full_time=Job::with('company','category','location')->where('job_nature','Full Time')->take(3)->get();
+        $part_time=Job::with('company','category','location')->where('job_nature','Part Time')->take(3)->get();
+        $featured=Job::with('company','category','location')->latest('like')->limit(3)->get();
         $testimonials=Testimonial::all();
 
         return view('public.index',compact('locations','categories','testimonials','full_time','part_time','featured'));
@@ -58,11 +60,18 @@ class PublicController extends Controller
         return view('public.job_detail',compact('job'));
     }
     public function job_list(){
-        $full_time=Job::with('company','category','location')->where('job_nature','Full Time')->get();
-        $part_time=Job::with('company','category','location')->where('job_nature','Part Time')->get();
-        $featured=Job::with('company','category','location')->latest('like')->limit(5)->get();
-        // dd($full_time);
+        $full_time=Job::with('company','category','location')->where('job_nature','Full Time')->take(3)->get();
+        $part_time=Job::with('company','category','location')->where('job_nature','Part Time')->take(3)->get();
+        $featured=Job::with('company','category','location')->latest('like')->limit(3)->get();
         return view('public.job_list',compact('full_time','part_time','featured'));
+    }
+    public function jobs(){
+        $categories = Category::with(['job' => function($query) {
+            $query->take(3);
+        }])->latest('updated_at')->take(4)->get();
+
+        // dd($categories);
+        return view('public.jobs',compact('categories'));
     }
     public function testimonial(){
         $testimonials=Testimonial::all();

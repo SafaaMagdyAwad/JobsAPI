@@ -41,7 +41,6 @@
                                     <form action="{{ route('job.like',$item) }}" method="POST">
                                         @csrf
                                         @method('put')
-
                                         <button type="submit" class="btn btn-light btn-square me-3" ><i class="far fa-heart text-primary"></i></button>
                                     </form>
                                     <a class="btn btn-primary" href="{{ route('public.job_detail',$item) }}">Apply Now</a>
