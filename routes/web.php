@@ -72,6 +72,6 @@ Route::get('/auth/{social}/callback',[SocialController::class,'callback']);
 //qr code
 Route::get('/barcode', [BarcodeController::class, 'generateCode']);
 
-// messages
-Route::get('/getMessage', [MessageController::class, 'index']);
-Route::post('/message', [MessageController::class, 'store']);
+// // messages
+// Route::get('/getMessage', [MessageController::class, 'index']);
+// Route::post('/message', [MessageController::class, 'store']);
