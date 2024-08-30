@@ -17,10 +17,7 @@ use Illuminate\Support\Facades\Mail;
 
 class PublicController extends Controller
 {
-    //
     use Common;
-
-
     public function index(){
         $locations=Location::all();
         $categories=Category::all();
@@ -28,7 +25,6 @@ class PublicController extends Controller
         $part_time=Job::with('company','category','location')->where('job_nature','Part Time')->take(3)->get();
         $featured=Job::with('company','category','location')->latest('like')->limit(3)->get();
         $testimonials=Testimonial::all();
-
         return view('public.index',compact('locations','categories','testimonials','full_time','part_time','featured'));
     }
     public function about(){
@@ -36,8 +32,6 @@ class PublicController extends Controller
     }
     public function category(){
         $categories=Category::with('job')->get();
-
-        // dd($categories[0]->job()->count());
         return view('public.category',compact('categories'));
     }
     public function contact(){
@@ -69,8 +63,6 @@ class PublicController extends Controller
         $categories = Category::with(['job' => function($query) {
             $query->take(3);
         }])->latest('updated_at')->take(4)->get();
-
-        // dd($categories);
         return view('public.jobs',compact('categories'));
     }
     public function testimonial(){
@@ -78,9 +70,7 @@ class PublicController extends Controller
         return view('public.testimonial',compact('testimonials'));
     }
     public function search(Request $request){
-
         $jobs=Job::where('title',$request->Keyword)->orWhere('category_id',$request->category_id)->orWhere('location_id',$request->location_id)->get();
-        // dd($jobs);
         return view('public.searched',compact('jobs'));
     }
     public function job_apply(Request $request ){
@@ -93,25 +83,20 @@ class PublicController extends Controller
             'job_id' => 'required|exists:jobs,id',
         ]);
         $data['cv']=$this->uploadFile($request->cv,"assets/cv");
-
         JobApplication::create($data);//stores in data bade
         $data['job']= Job::findOrFail($data['job_id'])->title;// finding the job title
         Mail::to('Jobs@site.com')->send(new JobApplyMail($data)); //'Jobs@site.com' is the sender
-
         return redirect()->route('public.index');
 
     }
     public function like_job(Job $job){
-        //form to apply for the job
         $job->update([
             'like'=>$job->like+1,
         ]);
         return redirect()->route('public.index');
     }
     public function categoryJobs(Category $category){
-        //form to apply for the job
         $jobs=Job::where('category_id',$category->id)->get();
-        // dd($jobs);
         return view('public.category_job',compact('jobs'));
     }
 

@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\JobController;
 use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Public\PublicController;
+use App\Http\Controllers\SocialController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -60,3 +61,8 @@ Route::group(
 Auth::routes(['verify'=>true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware('verified')->name('home');
+
+Route::get('/auth/{social}/redirect',[SocialController::class,'redirect'])->name('social_link');
+Route::get('/auth/{social}/callback',[SocialController::class,'callback']);
+
+
