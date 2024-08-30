@@ -11,7 +11,8 @@
         "laravel/tinker": "^2.9",
         "laravel/ui": "^4.5",
         "mcamara/laravel-localization": "^2.0",
-        "milon/barcode": "^11.0"
+        "milon/barcode": "^11.0",
+        "twilio/sdk": "^8.2"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

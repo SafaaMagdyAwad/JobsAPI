@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\JobController;
 use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\BarcodeController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\Public\PublicController;
 use App\Http\Controllers\SocialController;
 use Illuminate\Support\Facades\Route;
@@ -67,4 +68,10 @@ Route::get('/auth/{social}/redirect',[SocialController::class,'redirect'])->name
 Route::get('/auth/{social}/callback',[SocialController::class,'callback']);
 
 
+//additional
+//qr code
 Route::get('/barcode', [BarcodeController::class, 'generateCode']);
+
+// messages
+Route::get('/getMessage', [MessageController::class, 'index']);
+Route::post('/message', [MessageController::class, 'store']);
