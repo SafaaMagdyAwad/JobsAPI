@@ -12,30 +12,33 @@ use Illuminate\Support\Facades\Auth;
 class SocialController extends Controller
 {
     public function redirect($social){
-        return Socialite::driver($social)->redirect();
+        if($social == 'github'){
+            return Socialite::driver($social)->redirect();
+        }else{
+            dd('this social is not active yet');
+           }
     }
     public function callback($social){
         $socialUser = Socialite::driver($social)->stateless()->user();
 
-        $user = User::where('email', $socialUser->email)->first();
-            if (!$user) {
-                // Create the user if they don't exist
-                $user = User::create([
+
+           if($social == 'github'){
+            $user = User::firstOrCreate(
+                [
+                    'email' => $socialUser->email
+                ],
+                [
+                    'github_id' => $socialUser->id,
                     'name' => $socialUser->name ?? $socialUser->nickname,
-                    'email' => $socialUser->email,
-                    $social.'_id' => $socialUser->id,
-                    $social.'_token' => $socialUser->token,
-                    $social.'_refresh_token' => $socialUser->refreshToken,
-                    'password' => Hash::make(Str::random(30)), // Generate a random password
-                ]);
-            } else {
-                // If user exists, update their GitHub tokens
-                $user->update([
-                    $social.'_id' => $socialUser->id,
-                    $social.'_token' => $socialUser->token,
-                    $social.'_refresh_token' => $socialUser->refreshToken,
-                ]);
-            }
+                    'github_token' => $socialUser->token,
+                    'github_refresh_token' => $socialUser->refreshToken,
+                    'password' => Hash::make(Str::random(30)),
+                ]
+        );
+
+           }else{
+            dd('this social is not active yet');
+           }
 
 
         Auth::login($user);

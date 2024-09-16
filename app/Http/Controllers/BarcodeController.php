@@ -16,7 +16,7 @@ class BarcodeController extends Controller
 
         $qrcode->setStorPath(__DIR__.'/cache/');
 
-        $html = $qrcode->getBarcodeHTML('https://youtube.com/C/AllAboutLaravel', 'QRCODE');
+        $html = $qrcode->getBarcodeHTML('منى ومحمد حمير بس صفاء عسل ', 'QRCODE');
 
         return view('codes', compact('html'));
     }

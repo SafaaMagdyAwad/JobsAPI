@@ -24,7 +24,7 @@
                                        {!! $html !!}
                                  </div>
                              </div>
-                            <div class="col-6">
+                            {{-- <div class="col-6">
                                 <div class="mb-3"><h5>Pharma</h5>
                                     {!! DNS1D::getBarcodeHTML('4445645656', 'PHARMA') !!}
                                 </div>
@@ -42,7 +42,7 @@
                                 <div class="mb-3"><h5>CODABAR</h5>
                                     {!! DNS1D::getBarcodeHTML('4445645656', 'CODABAR') !!}
                                 </div>
-                            </div>
+                            </div> --}}
                           </div>
                       </div>
                   </div>

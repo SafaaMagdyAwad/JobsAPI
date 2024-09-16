@@ -16,13 +16,15 @@ class JobFactory extends Factory
      */
     public function definition(): array
     {
+        $images=['com-logo-1.jpg','com-logo-2.jpg','com-logo-3.jpg','com-logo-4.jpg','com-logo-5.jpg'];
+        $jobNature=['Full Time','Part Time'];
         return [
             'title'=>fake()->jobTitle(),
-            'image'=> basename(fake()->image(public_path('assets/images/jobs'))),
+            'image'=> fake()->randomElement($images),
             'description'=>fake()->text(),
             'responsability'=>fake()->text(),
             'qualification'=>fake()->text(),
-            'job_nature'=>fake()->randomElement(['Full Time','Part Time']),
+            'job_nature'=>fake()->randomElement($jobNature),
             'salary_from'=>fake()->numberBetween(20000,30000),
             'salary_to'=>fake()->numberBetween(40000,60000),
             'date_line'=>fake()->date(),

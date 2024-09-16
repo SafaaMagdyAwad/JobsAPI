@@ -11,6 +11,7 @@ use App\Models\Contact;
 use App\Models\Job;
 use App\Models\JobApplication;
 use App\Models\Location;
+use App\Models\NewsLetter;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -54,9 +55,9 @@ class PublicController extends Controller
         return view('public.job_detail',compact('job'));
     }
     public function job_list(){
-        $full_time=Job::with('company','category','location')->where('job_nature','Full Time')->take(3)->get();
-        $part_time=Job::with('company','category','location')->where('job_nature','Part Time')->take(3)->get();
-        $featured=Job::with('company','category','location')->latest('like')->limit(3)->get();
+        $full_time=Job::with('company','category','location')->where('job_nature','Full Time')->get();
+        $part_time=Job::with('company','category','location')->where('job_nature','Part Time')->get();
+        $featured=Job::with('company','category','location')->latest('like')->get();
         return view('public.job_list',compact('full_time','part_time','featured'));
     }
     public function jobs(){
@@ -98,6 +99,15 @@ class PublicController extends Controller
     public function categoryJobs(Category $category){
         $jobs=Job::where('category_id',$category->id)->get();
         return view('public.category_job',compact('jobs'));
+    }
+    public function newsLetter(Request $request){
+        $data=$request->validate([
+            'email'=>'required|email',
+        ]);    
+        $data['active']=1;
+        NewsLetter::create($data);
+        //there will be a command that selects all active emails and send them notifications to visit the site
+        return redirect()->back();
     }
 
 

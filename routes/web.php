@@ -14,13 +14,13 @@ use App\Http\Controllers\SocialController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 
 //public functions
-Route::get('index',[PublicController::class,'index'])->name('public.index');
+Route::get('/',[PublicController::class,'index'])->name('public.index');
 Route::get('about',[PublicController::class,'about'])->name('public.about');
 Route::get('category',[PublicController::class,'category'])->name('public.category');
 Route::get('contact',[PublicController::class,'contact'])->name('public.contact');
@@ -33,6 +33,7 @@ Route::post('job_apply',[PublicController::class,'job_apply'])->name('job_apply'
 Route::put('job_like/{job}',[PublicController::class,'like_job'])->name('job.like');
 Route::get('categoryJobs/{category}',[PublicController::class,'categoryJobs'])->name('categoryJobs');
 Route::post('search',[PublicController::class,'search'])->name('search');
+Route::post('newsLetter',[PublicController::class,'newsLetter'])->name('newsLetter');
 
 
 

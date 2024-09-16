@@ -6,7 +6,7 @@
             @foreach ($testimonials as $testimonial)    
                 <div class="testimonial-item bg-light rounded p-4">
                     <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                    <p>{{ $testimonial->message }}</p>
+                    <p>{{ Str::limit($testimonial->message, 30, '...') }}</p>
                     <div class="d-flex align-items-center">
                         <img class="img-fluid flex-shrink-0 rounded" src="{{ asset('assets/images/testimonials/'.$testimonial->image) }}" style="width: 50px; height: 50px;">
                         <div class="ps-3">

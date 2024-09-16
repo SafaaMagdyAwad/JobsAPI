@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('image');
             $table->string('description');
             $table->string('responsability');
-            $table->string('job_nature');
+            $table->enum('job_nature',['Full Time','Part Time']);
             $table->integer('like')->default(0);
             $table->integer('vacancy');
             $table->float('salary_from');
