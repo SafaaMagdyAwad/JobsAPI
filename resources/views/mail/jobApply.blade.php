@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>Job Application Mail</h1>
-    <p> welcome hr: good afternoon , i'm{{ $data['name'] }} .</p>
+    <p> welcome hr: good afternoon , i'm {{ $data['name'] }} .</p>
     <hr>
     <p> here is my Website:  {{ $data['website']   }}:</p>
     <p>i think i'm good to work as {{ $data['job_title']   }} in your company.</p>
