@@ -22,6 +22,7 @@ class TestimonialFactory extends Factory
             'job'=>fake()->jobTitle(),
             'image'=>fake()->randomElement($image),
             'message'=>fake()->text(3000),
+            'published'=>fake()->boolean(),
         ];
     }
 }

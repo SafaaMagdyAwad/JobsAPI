@@ -22,10 +22,10 @@ class PublicController extends Controller
     public function index(){
         $locations=Location::all();
         $categories=Category::all();
-        $full_time=Job::with('company','category','location')->where('job_nature','Full Time')->take(3)->get();
-        $part_time=Job::with('company','category','location')->where('job_nature','Part Time')->take(3)->get();
-        $featured=Job::with('company','category','location')->latest('like')->limit(3)->get();
-        $testimonials=Testimonial::all();
+        $full_time=Job::with('company','category','location')->where('job_nature','Full Time')->where('published',1)->take(3)->get();
+        $part_time=Job::with('company','category','location')->where('job_nature','Part Time')->where('published',1)->take(3)->get();
+        $featured=Job::with('company','category','location')->where('published',1)->latest('like')->limit(3)->get();
+        $testimonials=Testimonial::where('published',1)->get();
         return view('public.index',compact('locations','categories','testimonials','full_time','part_time','featured'));
     }
     public function about(){
@@ -51,13 +51,13 @@ class PublicController extends Controller
         return redirect()->route('public.index');
     }
     public function job_detail(string $id){
-        $job=Job::with('company','category','location')->findOrFail($id);
+        $job=Job::with('company','category','location')->where('published',1)->findOrFail($id);
         return view('public.job_detail',compact('job'));
     }
     public function job_list(){
-        $full_time=Job::with('company','category','location')->where('job_nature','Full Time')->get();
-        $part_time=Job::with('company','category','location')->where('job_nature','Part Time')->get();
-        $featured=Job::with('company','category','location')->latest('like')->get();
+        $full_time=Job::with('company','category','location')->where('published',1)->where('job_nature','Full Time')->get();
+        $part_time=Job::with('company','category','location')->where('published',1)->where('job_nature','Part Time')->get();
+        $featured=Job::with('company','category','location')->where('published',1)->latest('like')->get();
         return view('public.job_list',compact('full_time','part_time','featured'));
     }
     public function jobs(){
@@ -67,11 +67,11 @@ class PublicController extends Controller
         return view('public.jobs',compact('categories'));
     }
     public function testimonial(){
-        $testimonials=Testimonial::all();
+        $testimonials=Testimonial::where('published',1)->get();
         return view('public.testimonial',compact('testimonials'));
     }
     public function search(Request $request){
-        $jobs=Job::where('title',$request->Keyword)->orWhere('category_id',$request->category_id)->orWhere('location_id',$request->location_id)->get();
+        $jobs=Job::where('published',1)->where('title',$request->Keyword)->orWhere('category_id',$request->category_id)->orWhere('location_id',$request->location_id)->get();
         return view('public.searched',compact('jobs'));
     }
     public function job_apply(Request $request ){
@@ -97,7 +97,7 @@ class PublicController extends Controller
         return redirect()->route('public.index');
     }
     public function categoryJobs(Category $category){
-        $jobs=Job::where('category_id',$category->id)->get();
+        $jobs=Job::where('category_id',$category->id)->where('published',1)->get();
         return view('public.category_job',compact('jobs'));
     }
     public function newsLetter(Request $request){

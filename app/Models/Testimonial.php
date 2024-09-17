@@ -13,5 +13,6 @@ class Testimonial extends Model
         'job',
         'image',
         'message',
+        'published',
     ];
 }
