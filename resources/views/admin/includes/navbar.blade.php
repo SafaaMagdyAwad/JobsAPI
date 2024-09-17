@@ -46,7 +46,7 @@
 
             </div>
             <div class="nav-item dropdown">
-                <a  class="nav-link " href="{{ route('jobApplication.index') }}" >{{ __('admin/main.jobApplications') }}</a>
+                <a  class="nav-link " href="{{ route('jobapplication.index') }}" >{{ __('admin/main.jobApplications') }}</a>
 
 
             </div>

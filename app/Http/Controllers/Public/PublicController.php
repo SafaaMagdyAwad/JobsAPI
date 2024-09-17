@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Public;
 
 use App\Http\Controllers\Controller;
 use App\Common;
+use App\Jobs\JobApplicationJob;
 use App\Mail\ContactMail;
 use App\Mail\JobApplyMail;
 use App\Models\Category;
@@ -80,13 +81,16 @@ class PublicController extends Controller
             'email' => 'required|email|max:50',
             'website' => 'required|string|max:100',
             'cv' => 'required|file',
-            'cover_litter' => 'nulphplable|string',
+            'cover_litter' => 'nullable|string',
             'job_id' => 'required|exists:jobs,id',
         ]);
         $data['cv']=$this->uploadFile($request->cv,"assets/cv");
-        JobApplication::create($data);//stores in data bade
-        $data['job']= Job::findOrFail($data['job_id'])->title;// finding the job title
+        JobApplication::create($data);//stores in data base
+        $data['job_title']= Job::findOrFail($data['job_id'])->title;// finding the job title
         Mail::to('Jobs@site.com')->send(new JobApplyMail($data)); //'Jobs@site.com' is the sender
+
+        // JobApplicationJob::dispatch( $data);
+        // dd($data);
         return redirect()->route('public.index');
 
     }

@@ -11,9 +11,9 @@
     <p> welcome hr: good afternoon , i'm{{ $data['name'] }} .</p>
     <hr>
     <p> here is my Website:  {{ $data['website']   }}:</p>
-    <p>Cover Litter{{ $data['cover_litter']   }}.</p>
-    <p>i think i'm good to work as {{ $data['job']   }} in your company.</p>
+    <p>i think i'm good to work as {{ $data['job_title']   }} in your company.</p>
     <p> my cv is attached with the email </p>
+    <p>Cover Litter{{ $data['cover_litter']   }}.</p>
     <p> thank you. </p>
 </body>
 </html>

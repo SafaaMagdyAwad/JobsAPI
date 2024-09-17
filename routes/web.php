@@ -50,7 +50,7 @@ Route::group(
         Route::resource('location',LocationController::class);
         Route::resource('company',CompanyController::class);
         Route::resource('categories',CategoryController::class);
-        Route::resource('jobApplication',JobApplicationController::class)->only(['index','show','destroy']);
+        Route::resource('jobapplication',JobApplicationController::class)->only(['index','show','destroy']);
    });
 
 

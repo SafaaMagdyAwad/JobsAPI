@@ -32,7 +32,7 @@
           <p class="fw-bold bg-light card-header">{{ __('admin/jobApplication.website') }} :: {{$data->website}}</p>
         </div>
         <div class="mb-4 text-center py-2">
-          <p class="fw-bold bg-light card-header">{{ __('admin/jobApplication.cover_litter') }} :: {{$data->cover_litter}}</p>
+          <p class="fw-bold bg-light card-header">{{ __('admin/jobApplication.cover_litter') }}<br> :: {{$data->cover_litter}}</p>
         </div>
         <div class="mb-4 text-center py-2">
           <p class="fw-bold bg-light card-header">{{ __('admin/jobApplication.job') }}  ::  {{$data->job->title}}</p>
@@ -41,7 +41,7 @@
 
 
         <div class="text-md-end">
-          <a href="{{route('jobApplication.index')}}" class="btn mt-4 btn-primary text-white fs-5 fw-bold border-0 py-2 px-md-5">
+          <a href="{{route('jobapplication.index')}}" class="btn mt-4 btn-primary text-white fs-5 fw-bold border-0 py-2 px-md-5">
             {{ __('admin/jobApplication.backtoall') }}
           </a>
         </div>

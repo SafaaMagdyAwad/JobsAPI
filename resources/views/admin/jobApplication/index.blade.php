@@ -36,11 +36,11 @@
       <td><a href="{{ asset('assets/cv/'.$jobApp['cv']) }}" target="_blank">{{ __('admin/jobApplication.cv') }}.pdf</a></td>
       <td> {{ \Illuminate\Support\Str::limit($jobApp['cover_litter'], 20,'...') }}</td>
       <td>{{$jobApp->job->title}}</td>
-      <td><a href="{{route('jobApplication.show',$jobApp)}}" class="btn btn-light">{{ __('admin/jobApplication.show') }}</a></td>
+      <td><a href="{{route('jobapplication.show',$jobApp)}}" class="btn btn-light">{{ __('admin/jobApplication.show') }}</a></td>
 
 
       <td>
-      <form id="" action="{{ route('jobApplication.destroy', $jobApp) }}" method="POST" >
+      <form id="" action="{{ route('jobapplication.destroy', $jobApp) }}" method="POST" >
        @csrf
       @method('DELETE')
         <button type="submit" class="btn btn-light" onclick="return confirm('{{ __('admin/jobApplication.deleteMessage') }}')">{{ __('admin/jobApplication.delete') }}</button>
