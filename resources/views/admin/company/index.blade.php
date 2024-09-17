@@ -25,7 +25,7 @@
     </tr>
   </thead>
   <tbody>
-    @foreach($companies as $company)
+    @foreach($data as $company)
     <tr>
       <td scope="row">{{$company['id']}}</td>
       <td>{{$company['company']}}</td>

@@ -24,7 +24,7 @@
     </tr>
   </thead>
   <tbody>
-    @foreach($locations as $location)
+    @foreach($data as $location)
     <tr>
       <td scope="row">{{$location['id']}}</td>
       <td>{{$location['location']}}</td>

@@ -132,7 +132,8 @@
 
       <label for="" class="form-label col-md-2 fw-bold text-md-end">{{ __('admin/job.published') }}:</label>
       <div class="col-md-10">
-              <input type="checkbox" name="published"  class="form-controll"  @checked(old('published'))>
+            <input value="0" type="hidden" name="published" >
+            <input type="checkbox" name="published"  class="form-controll" value="1"  @checked(old('published'))>
       </div>
     </div>
 
@@ -144,7 +145,7 @@
       <label for="" class="form-label col-md-2 fw-bold text-md-end">{{ __('admin/job.category') }}:</label>
       <div class="col-md-10">
           <select name="category_id" class="form-control">
-              @foreach ($categories as $category)
+              @foreach ($relationData['category'] as $category)
               <option value="{{ $category->id }}" @selected(old('category_id') ==  $category->id)>{{ $category->category }}</option>
               @endforeach
           </select>
@@ -159,7 +160,7 @@
       <label for="" class="form-label col-md-2 fw-bold text-md-end">{{ __('admin/job.location') }}:</label>
       <div class="col-md-10">
           <select name="location_id" class="form-control">
-              @foreach ($locations as $location)
+              @foreach ($relationData['location'] as $location)
               <option value="{{ $location->id }}" @selected(old('location_id') ==  $location->id)>{{ $location->location }}</option>
               @endforeach
           </select>
@@ -174,7 +175,7 @@
       <label for="" class="form-label col-md-2 fw-bold text-md-end">{{ __('admin/job.company') }}:</label>
       <div class="col-md-10">
           <select name="company_id" class="form-control">
-              @foreach ($companies as $company)
+              @foreach ($relationData['company'] as $company)
               <option value="{{ $company->id }}" @selected(old('company_id') ==  $company->id)>{{ $company->company }}</option>
               @endforeach
           </select>

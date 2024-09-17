@@ -8,7 +8,7 @@
 @section('content')
 
 
-<a href="{{ route('testimonials.create') }}" class="btn btn-dark"> {{ __('admin/testimonial.add') }}</a>
+<a href="{{ route('testimonial.create') }}" class="btn btn-dark"> {{ __('admin/testimonial.add') }}</a>
 
 <div class="bg-light p-5 rounded" style="overflow-x:auto;">
 <h2 class="fw-bold fs-2 mb-5 pb-2">{{ __('admin/testimonial.all') }}</h2>
@@ -27,18 +27,18 @@
     </tr>
   </thead>
   <tbody>
-    @foreach($testimonials as $testimonial)
+    @foreach($data as $testimonial)
     <tr>
       <td scope="row">{{$testimonial['name']}}</td>
       <td>{{$testimonial['job']}}</td>
       <td><img src="{{asset('assets/images/testimonials/'.$testimonial['image'])}}" width="50" height="100"></td>
       <td>{{Str::limit($testimonial['message'],7)}}</td>
 
-      <td><a href="{{route('testimonials.show',$testimonial['id'])}}" class="btn btn-light">{{ __('admin/testimonial.show') }}</a></td>
-      <td><a href="{{route('testimonials.edit',$testimonial['id'])}}" class="btn btn-light">{{ __('admin/testimonial.edit') }}</a></td>
+      <td><a href="{{route('testimonial.show',$testimonial['id'])}}" class="btn btn-light">{{ __('admin/testimonial.show') }}</a></td>
+      <td><a href="{{route('testimonial.edit',$testimonial['id'])}}" class="btn btn-light">{{ __('admin/testimonial.edit') }}</a></td>
 
       <td>
-      <form id="" action="{{ route('testimonials.destroy', $testimonial->id) }}" method="POST" >
+      <form id="" action="{{ route('testimonial.destroy', $testimonial->id) }}" method="POST" >
        @csrf
       @method('DELETE')
         <button type="submit" class="btn btn-light"  onclick="return confirm('{{ __('admin/jobApplication.deleteMessage') }}')"> {{ __('admin/testimonial.delete') }}</button>

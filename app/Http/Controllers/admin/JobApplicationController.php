@@ -3,42 +3,20 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Job;
 use App\Models\JobApplication;
 
-class JobApplicationController extends Controller
+class JobApplicationController extends BaseControler
 {
-    /**
+     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        $jobApplications=JobApplication::with('job')->get();
-        // dd($jobApplications);
-        return view('admin.jobApplication.all',compact('jobApplications'));
-    }
+  protected string $model = JobApplication::class;
+  protected array $relationModels =[ Job::class];
+  protected array $relations = ['job'];
 
+  public function __construct() {
+      $this->columns = (new JobApplication())->getFillable();
+  }
 
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(JobApplication $jobApplication)
-    {
-        return view('admin.jobApplication.show',compact('jobApplication'));
-
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(JobApplication $jobApplication)
-    {
-        $jobApplication->delete();
-        return redirect()->route('jobApplication.index');
-    }
 }

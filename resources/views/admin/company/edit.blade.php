@@ -10,7 +10,7 @@
 
 <div class="bg-light p-5 rounded">
   <h2 class="fw-bold fs-2 mb-5 pb-2">{{ __('admin/company.edit') }}</h2>
-  <form action="{{route('company.update',[$company['id']])}}" method="post" class="px-md-5" >
+  <form action="{{route('company.update',[$data['id']])}}" method="post" class="px-md-5" >
     @csrf
     @method('put')
     <div class="form-group mb-3 row">
@@ -19,7 +19,7 @@
       @enderror
       <label for="" class="form-label col-md-2 fw-bold text-md-end">{{ __('admin/company.company') }}:</label>
       <div class="col-md-10">
-        <input type="text" placeholder="{{ __('admin/company.company') }}" name="company" class="form-control py-2" value="{{old('company',$company->company)}}" />
+        <input type="text" placeholder="{{ __('admin/company.company') }}" name="company" class="form-control py-2" value="{{old('company',$data->company)}}" />
       </div>
     </div>
 

@@ -9,7 +9,7 @@
 
 <div class="bg-light p-5 rounded">
   <h2 class="fw-bold fs-2 mb-5 pb-2">{{ __('admin/testimonial.add') }}</h2>
-  <form action="{{route('testimonials.store')}}" method="post" class="px-md-5" enctype="multipart/form-data">
+  <form action="{{route('testimonial.store')}}" method="post" class="px-md-5" enctype="multipart/form-data">
 
     @csrf
 

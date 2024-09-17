@@ -8,39 +8,26 @@ use App\Models\Category;
 use App\Models\Company;
 use App\Models\Job;
 use App\Models\Location;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
-class JobController extends Controller
+class JobController extends BaseControler
 {
-    use Common;
+    protected string $filesPath = "assets/images/jobs";
+    protected string $model = Job::class;
+    protected array $relationModels = [Company::class,Category::class,Location::class];
+    protected array $relations = ['company','category','location'];
 
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        $jobs=Job::with(['company','category','location'])->get();
-        return view('admin.job.all',compact('jobs'));
+    public function __construct() {
+        $this->columns = (new Job())->getFillable();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        $companies = Company::all();
-        $categories = Category::all();
-        $locations = Location::all();
-        return view('admin.job.create',compact(['companies','categories','locations']));
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
+
         // dd($request->all());
-        $data=$request->validate([
+        $request->validate([
             'title' => 'required|string',
             'image' => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'description' => 'required|string',
@@ -55,43 +42,12 @@ class JobController extends Controller
             'location_id' => 'required|exists:locations,id',
             'company_id' => 'required|exists:companies,id',
         ]);
-        $data['published'] = isset($request->published);
-        $data['image'] = $this->uploadFile($request->image,'assets/images/jobs/');
-
-        // dd($data);
-
-        Job::create($data);
-
-        return redirect()->route('job.index');
+        return parent::store($request);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(String $id)
+    public function update(Request $request, String $id): RedirectResponse
     {
-        $job=Job::with(['company','category','location'])->findOrFail($id);
-        return view('admin.job.show',compact('job'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        $companies = Company::all();
-        $categories = Category::all();
-        $locations = Location::all();
-        $job=Job::with(['company','category','location'])->findOrFail($id);
-        return view('admin.job.edit',compact('job','companies','categories','locations'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        $data=$request->validate([
+        $request->validate([
             'title' => 'required|string',
             'image' => 'nullable|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'description' => 'required|string',
@@ -107,22 +63,9 @@ class JobController extends Controller
             'location_id' => 'required|exists:locations,id',
             'company_id' => 'required|exists:companies,id',
         ]);
-        $data['published'] = isset($request->published);
-        $data['image'] = isset($request->image)? $this->uploadFile($request->image,'assets/images/jobs/'): $request->old_image;
 
-        $job= Job::findOrFail($id);
-        $job->update($data);
-
-        return redirect()->route('job.index');
+        return parent::update($request, $id);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        $job= Job::findOrFail($id);
-        $job->delete();
-        return redirect()->route('job.index');
-    }
+
 }

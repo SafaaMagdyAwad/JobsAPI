@@ -76,11 +76,11 @@ class PublicController extends Controller
     }
     public function job_apply(Request $request ){
         $data=$request->validate([
-            'name' => 'required|string',
-            'email' => 'required|email',
-            'website' => 'required|string',
+            'name' => 'required|string|max:30',
+            'email' => 'required|email|max:50',
+            'website' => 'required|string|max:100',
             'cv' => 'required|file',
-            'cover_litter' => 'nullable|string',
+            'cover_litter' => 'nulphplable|string',
             'job_id' => 'required|exists:jobs,id',
         ]);
         $data['cv']=$this->uploadFile($request->cv,"assets/cv");
@@ -103,7 +103,7 @@ class PublicController extends Controller
     public function newsLetter(Request $request){
         $data=$request->validate([
             'email'=>'required|email',
-        ]);    
+        ]);
         $data['active']=1;
         NewsLetter::create($data);
         //there will be a command that selects all active emails and send them notifications to visit the site

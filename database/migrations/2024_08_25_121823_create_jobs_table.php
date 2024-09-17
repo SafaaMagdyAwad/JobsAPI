@@ -15,14 +15,14 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('image');
-            $table->string('description');
-            $table->string('responsability');
+            $table->text('description');
+            $table->text('responsability');
             $table->enum('job_nature',['Full Time','Part Time']);
             $table->integer('like')->default(0);
             $table->integer('vacancy');
             $table->float('salary_from');
             $table->float('salary_to');
-            $table->string('qualification');
+            $table->text('qualification');
             $table->date('date_line');
             $table->boolean('published');
             $table->foreignId('category_id')->constrained('categories');

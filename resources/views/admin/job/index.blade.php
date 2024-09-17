@@ -32,7 +32,7 @@
     </tr>
   </thead>
   <tbody>
-    @foreach($jobs as $job)
+    @foreach($data as $job)
     <tr>
       <td scope="row">{{$job['title']}}</td>
       <td>{{$job['salary_from']}}$ :{{$job['salary_to']}}$</td>

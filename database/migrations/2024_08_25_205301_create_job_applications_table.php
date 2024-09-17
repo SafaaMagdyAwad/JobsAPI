@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('email',50);
             $table->string('website',100);
             $table->string('cv',30);
-            $table->string('cover_litter',500)->nullable();
+            $table->text('cover_litter')->nullable();
             $table->foreignId('job_id')->constrained('jobs');
             $table->timestamps();
         });

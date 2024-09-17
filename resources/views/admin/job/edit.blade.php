@@ -10,10 +10,10 @@
 
 <div class="bg-light p-5 rounded">
   <h2 class="fw-bold fs-2 mb-5 pb-2">{{ __('admin/job.edit') }}</h2>
-  <form action="{{route('job.update',[$job['id']])}}" method="post" class="px-md-5" enctype="multipart/form-data">
+  <form action="{{route('job.update',[$data['id']])}}" method="post" class="px-md-5" enctype="multipart/form-data">
     @csrf
     @method('put')
-    <input type="hidden" name="old_image" value="{{ $job->image }}">
+    <input type="hidden" name="old_image" value="{{ $data->image }}">
 
     <div class="form-group mb-3 row">
       @error('title')
@@ -21,7 +21,7 @@
       @enderror
       <label for="" class="form-label col-md-2 fw-bold text-md-end">{{ __('admin/job.title') }}:</label>
       <div class="col-md-10">
-        <input type="text" placeholder="backend " name="title" class="form-control py-2" value="{{ old('title', $job->title) }}" />
+        <input type="text" placeholder="backend " name="title" class="form-control py-2" value="{{ old('title', $data->title) }}" />
 
       </div>
     </div>
@@ -34,7 +34,7 @@
         @enderror
         <label for="" class="form-label col-md-2 fw-bold text-md-end">{{ __('admin/job.image') }}:</label>
         <div class="col-md-10">
-          <img src="{{ asset('assets/images/jobs/'.$job->image) }}" alt="{{ $job->title }}"  width="50" height="100">
+          <img src="{{ asset('assets/images/jobs/'.$data->image) }}" alt="{{ $data->title }}"  width="50" height="100">
         <input type="file"  name="image" class="form-control py-2" />
       </div>
     </div>
@@ -46,7 +46,7 @@
       @enderror
       <label for="" class="form-label col-md-2 fw-bold text-md-end">{{ __('admin/job.description') }}:</label>
       <div class="col-md-10">
-        <textarea name="description" id="" cols="30" rows="5" class="form-control py-2">{{ old('description', $job->description) }}</textarea>
+        <textarea name="description" id="" cols="30" rows="5" class="form-control py-2">{{ old('description', $data->description) }}</textarea>
       </div>
     </div>
 
@@ -57,7 +57,7 @@
       @enderror
       <label for="" class="form-label col-md-2 fw-bold text-md-end">{{ __('admin/job.qualification') }}:</label>
       <div class="col-md-10">
-        <textarea name="qualification" id="" cols="30" rows="5" class="form-control py-2">{{ old('qualification', $job->qualification) }}</textarea>
+        <textarea name="qualification" id="" cols="30" rows="5" class="form-control py-2">{{ old('qualification', $data->qualification) }}</textarea>
       </div>
     </div>
 
@@ -68,7 +68,7 @@
       @enderror
       <label for="" class="form-label col-md-2 fw-bold text-md-end">{{ __('admin/job.responsability') }}:</label>
       <div class="col-md-10">
-        <textarea name="responsability" id="" cols="30" rows="5" class="form-control py-2">{{ old('responsability', $job->responsability) }}</textarea>
+        <textarea name="responsability" id="" cols="30" rows="5" class="form-control py-2">{{ old('responsability', $data->responsability) }}</textarea>
       </div>
     </div>
 
@@ -80,8 +80,8 @@
       <label for="" class="form-label col-md-2 fw-bold text-md-end">{{ __('admin/job.job_nature') }}:</label>
       <div class="col-md-10">
           <select name="job_nature" class="form-control">
-              <option value="Full Time" @selected(old('job_nature',$job->job_nature) == "Full Time")>{{ __('admin/job.FullTime') }}</option>
-              <option value="Part Time" @selected(old('job_nature',$job->job_nature) == "Part Time")>{{ __('admin/job.PartTime') }}</option>
+              <option value="Full Time" @selected(old('job_nature',$data->job_nature) == "Full Time")>{{ __('admin/job.FullTime') }}</option>
+              <option value="Part Time" @selected(old('job_nature',$data->job_nature) == "Part Time")>{{ __('admin/job.PartTime') }}</option>
           </select>
       </div>
     </div>
@@ -95,7 +95,7 @@
       @enderror
       <label for="" class="form-label col-md-2 fw-bold text-md-end">{{ __('admin/job.vacancy') }}:</label>
       <div class="col-md-10">
-              <input type="number" name="vacancy" step=1 class="form-controll" value="{{ old('vacancy',$job->vacancy) }}">
+              <input type="number" name="vacancy" step=1 class="form-controll" value="{{ old('vacancy',$data->vacancy) }}">
       </div>
     </div>
     <hr>
@@ -105,7 +105,7 @@
       @enderror
       <label for="" class="form-label col-md-2 fw-bold text-md-end">{{ __('admin/job.salary_from') }}:</label>
       <div class="col-md-10">
-              <input type="number" name="salary_from" step=0.1 class="form-controll" value="{{ old('salary_from',$job->salary_from) }}">
+              <input type="number" name="salary_from" step=0.1 class="form-controll" value="{{ old('salary_from',$data->salary_from) }}">
       </div>
     </div>
 
@@ -116,7 +116,7 @@
       @enderror
       <label for="" class="form-label col-md-2 fw-bold text-md-end">{{ __('admin/job.salary_to') }}:</label>
       <div class="col-md-10">
-              <input type="number" name="salary_to" step=0.1 class="form-controll" value="{{ old('salary_to',$job->salary_to) }}">
+              <input type="number" name="salary_to" step=0.1 class="form-controll" value="{{ old('salary_to',$data->salary_to) }}">
       </div>
     </div>
 
@@ -127,7 +127,7 @@
       @enderror
       <label for="" class="form-label col-md-2 fw-bold text-md-end">{{ __('admin/job.date_line') }}:</label>
       <div class="col-md-10">
-              <input type="date" name="date_line"  class="form-controll" value="{{ old('date_line',$job->date_line) }}">
+              <input type="date" name="date_line"  class="form-controll" value="{{ old('date_line',$data->date_line) }}">
       </div>
     </div>
 
@@ -136,7 +136,8 @@
 
       <label for="" class="form-label col-md-2 fw-bold text-md-end">{{ __('admin/job.published') }}:</label>
       <div class="col-md-10">
-              <input type="checkbox" name="published"  class="form-controll"  @checked(old('published',$job->published))>
+            <input type="hidden" value="0"  name="published" >
+            <input type="checkbox" name="published"  class="form-controll" value="1"  @checked(old('published',$data->published))>
       </div>
     </div>
 
@@ -149,8 +150,8 @@
       <label for="" class="form-label col-md-2 fw-bold text-md-end">{{ __('admin/job.category') }}:</label>
       <div class="col-md-10">
           <select name="category_id" class="form-control">
-              @foreach ($categories as $category)
-              <option value="{{ $category->id }}" @selected(old('category_id',$job->category_id) ==  $category->id)>{{ $category->category }}</option>
+              @foreach ($relationData['category'] as $category)
+              <option value="{{ $category->id }}" @selected(old('category_id',$data->category_id) ==  $category->id)>{{ $category->category }}</option>
               @endforeach
           </select>
       </div>
@@ -164,8 +165,8 @@
       <label for="" class="form-label col-md-2 fw-bold text-md-end">{{ __('admin/job.location') }}:</label>
       <div class="col-md-10">
           <select name="location_id" class="form-control">
-              @foreach ($locations as $location)
-              <option value="{{ $location->id }}" @selected(old('location_id',$job->location_id) ==  $location->id)>{{ $location->location }}</option>
+              @foreach ($relationData['location'] as $location)
+              <option value="{{ $location->id }}" @selected(old('location_id',$data->location_id) ==  $location->id)>{{ $location->location }}</option>
               @endforeach
           </select>
       </div>
@@ -179,8 +180,8 @@
       <label for="" class="form-label col-md-2 fw-bold text-md-end">{{ __('admin/job.company') }}:</label>
       <div class="col-md-10">
           <select name="company_id" class="form-control">
-              @foreach ($companies as $company)
-              <option value="{{ $company->id }}" @selected(old('company_id',$job->company_id) ==  $company->id)>{{ $company->company }}</option>
+              @foreach ($relationData['company'] as $company)
+              <option value="{{ $company->id }}" @selected(old('company_id',$data->company_id) ==  $company->id)>{{ $company->company }}</option>
               @endforeach
           </select>
       </div>

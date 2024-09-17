@@ -9,17 +9,17 @@
 
 <div class="bg-light p-5 rounded">
   <h2 class="fw-bold fs-2 mb-5 pb-2">{{ __('admin/testimonial.edit') }}</h2>
-  <form action="{{route('testimonials.update',[$testimonial['id']])}}" method="post" class="px-md-5" enctype="multipart/form-data">
+  <form action="{{route('testimonial.update',[$data['id']])}}" method="post" class="px-md-5" enctype="multipart/form-data">
     @csrf
     @method('put')
-    <input type="hidden" name="old_image" value="{{ $testimonial->image }}">
+    <input type="hidden" name="old_image" value="{{ $data->image }}">
     <div class="form-group mb-3 row">
       @error('name')
           <div class="alert alert-danger">{{ $message }}</div>
       @enderror
       <label for="" class="form-label col-md-2 fw-bold text-md-end">{{ __('admin/testimonial.name') }}:</label>
       <div class="col-md-10">
-        <input type="text" placeholder="{{ __('admin/testimonial.name') }}" name="name" class="form-control py-2" value="{{old('name',$testimonial->name)}}" />
+        <input type="text" placeholder="{{ __('admin/testimonial.name') }}" name="name" class="form-control py-2" value="{{old('name',$data->name)}}" />
       </div>
     </div>
 
@@ -30,7 +30,7 @@
       @enderror
       <label for="" class="form-label col-md-2 fw-bold text-md-end">{{ __('admin/testimonial.job') }}:</label>
       <div class="col-md-10">
-        <input type="text" placeholder="{{ __('admin/testimonial.job') }}" name="job" class="form-control py-2" value="{{old('job',$testimonial->job)}}" />
+        <input type="text" placeholder="{{ __('admin/testimonial.job') }}" name="job" class="form-control py-2" value="{{old('job',$data->job)}}" />
       </div>
     </div>
 
@@ -41,7 +41,7 @@
         @enderror
         <label for="" class="form-label col-md-2 fw-bold text-md-end">{{ __('admin/testimonial.image') }}:</label>
         <div class="col-md-10">
-          <img src="{{ asset('assets/images/testimonials/'.$testimonial->image) }}"  width="50 px" height="100 px">
+          <img src="{{ asset('assets/images/testimonials/'.$data->image) }}"  width="50 px" height="100 px">
         <input type="file"  name="image" class="form-control py-2" />
       </div>
     </div>
@@ -53,7 +53,7 @@
       @enderror
       <label for="" class="form-label col-md-2 fw-bold text-md-end">{{ __('admin/testimonial.message') }}:</label>
       <div class="col-md-10">
-          <textarea name="message" placeholder="{{ __('admin/testimonial.message') }}" cols="30" rows="5"class="form-control py-2"  >{{old('message',$testimonial->message)}}</textarea>
+          <textarea name="message" placeholder="{{ __('admin/testimonial.message') }}" cols="30" rows="5"class="form-control py-2"  >{{old('message',$data->message)}}</textarea>
       </div>
     </div>
 

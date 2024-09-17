@@ -19,8 +19,8 @@
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">{{ __('admin/main.testimonials') }}</a>
                 <div class="dropdown-menu rounded-0 m-0">
-                    <a href="{{route('testimonials.index')}}" class="dropdown-item">{{ __('admin/main.testimonials') }}</a>
-                    <a href="{{route('testimonials.create')}}" class="dropdown-item"> {{ __('admin/main.add_testimonial') }}</a>
+                    <a href="{{route('testimonial.index')}}" class="dropdown-item">{{ __('admin/main.testimonials') }}</a>
+                    <a href="{{route('testimonial.create')}}" class="dropdown-item"> {{ __('admin/main.add_testimonial') }}</a>
                 </div>
             </div>
             <div class="nav-item dropdown">

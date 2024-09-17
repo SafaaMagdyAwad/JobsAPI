@@ -23,7 +23,7 @@
     </tr>
   </thead>
   <tbody>
-    @foreach($categories as $category)
+    @foreach($data as $category)
     <tr>
       <td scope="row">{{$category['id']}}</td>
       <td>{{$category['category']}}</td>

@@ -28,7 +28,7 @@
     </tr>
   </thead>
   <tbody>
-    @foreach($jobApplications as $jobApp)
+    @foreach($data as $jobApp)
     <tr>
       <td scope="row">{{$jobApp['name']}}</td>
       <td>{{$jobApp['email']}}</td>

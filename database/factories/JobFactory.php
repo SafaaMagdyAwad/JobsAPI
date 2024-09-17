@@ -21,9 +21,9 @@ class JobFactory extends Factory
         return [
             'title'=>fake()->jobTitle(),
             'image'=> fake()->randomElement($images),
-            'description'=>fake()->text(),
-            'responsability'=>fake()->text(),
-            'qualification'=>fake()->text(),
+            'description'=>fake()->text(3000),
+            'responsability'=>fake()->text(3000),
+            'qualification'=>fake()->text(3000),
             'job_nature'=>fake()->randomElement($jobNature),
             'salary_from'=>fake()->numberBetween(20000,30000),
             'salary_to'=>fake()->numberBetween(40000,60000),
