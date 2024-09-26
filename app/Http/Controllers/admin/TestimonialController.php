@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Models\Testimonial;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
@@ -17,7 +18,7 @@ class TestimonialController extends BaseControler
     }
 
 
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request): JsonResponse
     {
         $request->validate([
             'name' => 'required|string',
@@ -28,7 +29,7 @@ class TestimonialController extends BaseControler
         return parent::store($request);
     }
 
-    public function update(Request $request, String $id): RedirectResponse
+    public function update(Request $request, String $id): JsonResponse
     {
         $request->validate([
             'name' => 'required|string',

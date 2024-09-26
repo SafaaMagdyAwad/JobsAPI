@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Company;
 use App\Models\Job;
 use App\Models\Location;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
@@ -23,7 +24,7 @@ class JobController extends BaseControler
     }
 
 
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request): JsonResponse
     {
 
         // dd($request->all());
@@ -45,7 +46,7 @@ class JobController extends BaseControler
         return parent::store($request);
     }
 
-    public function update(Request $request, String $id): RedirectResponse
+    public function update(Request $request, String $id): JsonResponse
     {
         $request->validate([
             'title' => 'required|string',

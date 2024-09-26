@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Company;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
@@ -18,7 +19,7 @@ class CompanyController extends BaseControler
       $this->columns = (new Company())->getFillable();
   }
 
-  public function store(Request $request): RedirectResponse
+  public function store(Request $request): JsonResponse
   {
     $request->validate([
         'company' => 'required|string',
@@ -26,7 +27,7 @@ class CompanyController extends BaseControler
       return parent::store($request);
   }
 
-  public function update(Request $request, String $id): RedirectResponse
+  public function update(Request $request, String $id): JsonResponse
   {
     $request->validate([
         'company' => 'required|string',

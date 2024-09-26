@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
-use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class CategoryController extends BaseControler
@@ -15,7 +15,7 @@ class CategoryController extends BaseControler
         $this->columns = (new Category())->getFillable();
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request): JsonResponse
     {
         $request->validate([
             'category' => 'required|string|unique:categories,category',
@@ -23,7 +23,7 @@ class CategoryController extends BaseControler
         return parent::store($request);
     }
 
-    public function update(Request $request, String $id): RedirectResponse
+    public function update(Request $request, String $id): JsonResponse
     {
         $request->validate([
             'category' => 'required|string|unique:categories,category',

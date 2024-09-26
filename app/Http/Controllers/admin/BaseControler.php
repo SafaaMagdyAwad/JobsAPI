@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Common;
 use App\Http\Controllers\Controller;
-use Illuminate\Contracts\View\View;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
@@ -27,7 +27,7 @@ class BaseControler extends Controller
     // columns to create and update
     protected array $columns = [];
 
-    public function index(): View
+    public function index(): JsonResponse
     {
         $model = new $this->model;
         if (!empty($this->relations)) {
@@ -35,25 +35,35 @@ class BaseControler extends Controller
         }
         $data = $model->get();
 
-        return view('admin.' . $this->getViewName('index'), compact('data'));
+        return response()->json([
+            'filesPath'=>$this->filesPath,
+            'data' => $data,
+        ], 200);
     }
 
-    public function create(): View
+    public function create(): JsonResponse
     {
         $relationData=$this->getRelationData();
         // dd($relationData);
-        return view('admin.' . $this->getViewName('create'), compact('relationData'));
+        return response()->json([
+            'relationData' => $relationData,
+            'filesPath'=>$this->filesPath,
+
+        ], 200);
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request): JsonResponse
     {
         // check if request is coming with file
         $data = $this->checkRequestForFiles($request);
         //no need for relation data
         $this->model::create($data); //Car::create()
-        return redirect()->route($this->getViewName('index')); ///lowerCase modelName.index   ex car.index
+        return response()->json([
+            'success' => 'Data Created Successfully',
+        ], 200);
     }
-    public function show(String $id): View
+    
+    public function show(String $id): JsonResponse
     {
         $model = new $this->model;
 
@@ -61,28 +71,36 @@ class BaseControler extends Controller
             $model = $model::with($this->relations);
         }
         $data = $model->findOrFail($id);
-        return view('admin.' . $this->getViewName('show'), compact('data'));
+        return response()->json([
+            'filesPath'=>$this->filesPath,
+            'data' => $data,
+        ], 200);
     }
-    public function edit(String $id): View
+    public function edit(String $id): JsonResponse
     {
         $data = $this->model::findOrFail($id);
         $relationData=$this->getRelationData();
+        return response()->json([
+            'filesPath'=>$this->filesPath,
+            'data' => $data,
+            'relationData' => $relationData,
+        ], 200);
 
-
-        return view('admin.' . $this->getViewName('edit'), compact('data', 'relationData'));
     }
-    public function update(Request $request, String $id): RedirectResponse
+    public function update(Request $request, String $id): JsonResponse
     {
         $data = $this->checkRequestForFiles($request);
 
-        $this->model::where('id', $id)->update($data);
-        return redirect()->route($this->getViewName('index'));
+        $this->model::where('id', $id)->update($data);return response()->json([
+            'success' => 'data updated Successfully',
+        ], 200);
     }
-    public function destroy(String $id): RedirectResponse
+    public function destroy(String $id): JsonResponse
     {
         $this->model::where('id', $id)->delete();
-        return redirect()->route($this->getViewName('index'));
-    }
+        return response()->json([
+            'success' => 'data Deleted Successfully',
+        ], 200);    }
 
     protected function getViewName($action)
     {
