@@ -16,10 +16,11 @@ class JobDataController extends BaseControler
     protected string $resourse = JobDataResource::class;
 
     protected string $model = JobData::class;
-    protected array $relationModels = [Company::class,Category::class,Location::class];
-    protected array $relations = ['company','category','location'];
+    protected array $relationModels = [Company::class, Category::class, Location::class];
+    protected array $relations = ['company', 'category', 'location'];
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->columns = (new JobData())->getFillable();
     }
 
@@ -67,6 +68,4 @@ class JobDataController extends BaseControler
 
         return parent::update($request, $id);
     }
-
-
 }

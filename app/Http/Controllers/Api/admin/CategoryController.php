@@ -15,7 +15,8 @@ class CategoryController extends BaseControler
     protected array $relationModels = [JobData::class];
     protected array $relations = ['jobdata'];
     protected string $resourse = CategoryResource::class;
-    public function __construct() {
+    public function __construct()
+    {
         $this->columns = (new Category())->getFillable();
     }
 
@@ -30,9 +31,8 @@ class CategoryController extends BaseControler
     public function update(Request $request, String $id): JsonResponse
     {
         $request->validate([
-            'category' => 'required|string|unique:categories,category,'.$id,
+            'category' => 'required|string|unique:categories,category,' . $id,
         ]);
         return parent::update($request, $id);
     }
-
 }

@@ -2,24 +2,22 @@
 
 namespace App\Http\Controllers\Api\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Common;
 use App\Models\Category;
 use App\Models\Company;
 use App\Models\Job;
 use App\Models\Location;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class JobController extends BaseControler
 {
     protected string $filesPath = "assets/images/jobs";
     protected string $model = Job::class;
-    protected array $relationModels = [Company::class,Category::class,Location::class];
-    protected array $relations = ['company','category','location'];
+    protected array $relationModels = [Company::class, Category::class, Location::class];
+    protected array $relations = ['company', 'category', 'location'];
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->columns = (new Job())->getFillable();
     }
 
@@ -67,6 +65,4 @@ class JobController extends BaseControler
 
         return parent::update($request, $id);
     }
-
-
 }

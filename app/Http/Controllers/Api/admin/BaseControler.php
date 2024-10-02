@@ -29,8 +29,6 @@ class BaseControler extends Controller
 
     public function index(): JsonResponse
     {
-
-
         $model = new $this->model;
         if (!empty($this->relations)) {
             $model = $model::with($this->relations);
@@ -92,8 +90,8 @@ class BaseControler extends Controller
             $model = $model::with($this->relations);
         }
         $data = $model->findOrFail($id);
-        foreach($this->relations as $relation){
-            if($data[$relation]->count()){
+        foreach ($this->relations as $relation) {
+            if ($data[$relation]->count()) {
                 return response()->json([
                     'error' => 'data cant be  Deleted ',
                 ], 200);

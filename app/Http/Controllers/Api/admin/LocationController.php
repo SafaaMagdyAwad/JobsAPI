@@ -6,7 +6,6 @@ use App\Http\Resources\LocationResource;
 use App\Models\JobData;
 use App\Models\Location;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class LocationController extends BaseControler
@@ -17,7 +16,8 @@ class LocationController extends BaseControler
     protected string $resourse = LocationResource::class;
 
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->columns = (new Location())->getFillable();
     }
 
@@ -32,7 +32,7 @@ class LocationController extends BaseControler
     public function update(Request $request, String $id): JsonResponse
     {
         $request->validate([
-            'location' => 'required|string|unique:locations,location,'.$id,
+            'location' => 'required|string|unique:locations,location,' . $id,
         ]);
 
         return parent::update($request, $id);

@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api\Admin;
 use App\Http\Resources\TestimonialResource;
 use App\Models\Testimonial;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class TestimonialController extends BaseControler
@@ -15,7 +14,8 @@ class TestimonialController extends BaseControler
     protected string $resourse = TestimonialResource::class;
 
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->columns = (new Testimonial())->getFillable();
     }
 
@@ -43,6 +43,4 @@ class TestimonialController extends BaseControler
 
         return parent::update($request, $id);
     }
-
-
 }

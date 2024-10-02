@@ -14,28 +14,27 @@ class LoginController extends Controller
 {
     public function login(Request $request): JsonResponse
     {
-        $validator=FacadesValidator::make($request->all(),[
-            "email"=>'required|email|max:255',
-            "password"=>'required|string|min:8|max:255',
+        $validator = FacadesValidator::make($request->all(), [
+            "email" => 'required|email|max:255',
+            "password" => 'required|string|min:8|max:255',
         ]);
-        if($validator->fails()){
+        if ($validator->fails()) {
             return response()->json([
-                "message"=>$validator->messages(),
-            ],300);
+                "message" => $validator->messages(),
+            ], 300);
         }
 
-        $user=User::where('email',$request->email)->first();
-        if(! $user || ! Hash::check($request->password, $user->password)){
+        $user = User::where('email', $request->email)->first();
+        if (! $user || ! Hash::check($request->password, $user->password)) {
             return response()->json([
-                "message"=>"credentials dont match",
-            ],400);
+                "message" => "credentials dont match",
+            ], 400);
         }
-        $token=$user->createToken($user->name."Auth-Token")->plainTextToken;//could be any random value
+        $token = $user->createToken($user->name . "Auth-Token")->plainTextToken; //could be any random value
         return response()->json([
-            "message"=>"login success!",
-            "token_type"=>"Bearer",
-            "token"=>$token,
-        ],200);
-
+            "message" => "login success!",
+            "token_type" => "Bearer",
+            "token" => $token,
+        ], 200);
     }
 }

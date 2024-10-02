@@ -26,23 +26,18 @@ Route::put('job_like/{job}', [PublicController::class, 'like_job'])->name('job.l
 Route::get('categoryJobs/{category}', [PublicController::class, 'categoryJobs'])->name('categoryJobs');
 Route::post('search', [PublicController::class, 'search'])->name('search');
 Route::post('newsLetter', [PublicController::class, 'newsLetter'])->name('newsLetter');
-
 //authontication
 Route::post('register', [RegisterController::class, 'register'])->name('register');
 Route::post('login', [LoginController::class, 'login'])->name('login');
-
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('logout', [LogoutController::class, 'logout'])->name('logout');
-
     //admin functions
-
     Route::apiResource('jobdata', JobDataController::class);
     Route::apiResource('testimonial', TestimonialController::class);
     Route::apiResource('location', LocationController::class);
     Route::apiResource('company', CompanyController::class);
     Route::apiResource('categories', CategoryController::class);
     Route::apiResource('jobapplication', JobApplicationController::class)->only(['index', 'show', 'destroy']);
-
     Route::get('/user', function (Request $request) {
         return $request->user();  //returns the authonticated user
     });
