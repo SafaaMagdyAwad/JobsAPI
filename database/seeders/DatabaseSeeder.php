@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Category;
 use App\Models\Company;
-use App\Models\Job;
+use App\Models\JobData;
 use App\Models\Location;
 use App\Models\NewsLetter;
 use App\Models\Testimonial;
@@ -22,11 +22,11 @@ class DatabaseSeeder extends Seeder
         Location::factory(10)->create();
         Category::factory(10)->create();
         Company::factory(10)->create();
-        Job::factory(10)->create();
+        JobData::factory(10)->create();
         Testimonial::factory(10)->create();
         User::factory(10)->create();
         NewsLetter::factory(3)->create();
 
-        
+
     }
 }

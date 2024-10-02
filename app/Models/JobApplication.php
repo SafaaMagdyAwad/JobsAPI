@@ -16,7 +16,7 @@ class JobApplication extends Model
         'cover_litter',
         'job_id',
     ];
-    public function job(){
-        return $this->belongsTo(Job::class);
+    public function jobdata(){
+        return $this->belongsTo(JobData::class);
     }
 }

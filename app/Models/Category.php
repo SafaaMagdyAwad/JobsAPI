@@ -11,7 +11,7 @@ class Category extends Model
     protected $fillable = [
         'category',
     ];
-    public function job(){
-        return $this->hasMany(Job::class);
+    public function jobdata(){
+        return $this->hasMany(JobData::class);
     }
 }
