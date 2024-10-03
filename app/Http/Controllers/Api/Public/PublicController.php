@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Api\Public;
 
 use App\Http\Controllers\Controller;
 use App\Common;
+use App\Http\Resources\CategoryResource;
 use App\Http\Resources\JobDataResource;
+use App\Http\Resources\LocationResource;
+use App\Http\Resources\TestimonialResource;
 use App\Mail\ContactMail;
 use App\Mail\JobApplyMail;
 use App\Models\Category;
@@ -29,12 +32,12 @@ class PublicController extends Controller
         $featured = JobData::with('company', 'category', 'location')->where('published', 1)->latest('like')->limit(3)->get();
         $testimonials = Testimonial::where('published', 1)->get();
         return response()->json([
-            'locations' => $locations,
-            'categories' => $categories,
-            'testimonials' => $testimonials,
-            'full_time' => $full_time,
-            'part_time' => $part_time,
-            'featured' => $featured,
+            'locations' => LocationResource::collection($locations),
+            'categories' => CategoryResource::collection($categories),
+            'testimonials' => TestimonialResource::collection($testimonials),
+            'full_time' => JobDataResource::collection($full_time),
+            'part_time' => JobDataResource::collection($part_time),
+            'featured' => JobDataResource::collection($featured),
         ], 200);
     }
 
@@ -42,7 +45,7 @@ class PublicController extends Controller
     {
         $categories = Category::with('jobdata')->get();
         return response()->json([
-            'categories' => $categories,
+            'categories' => CategoryResource::collection($categories),
         ], 200);
     }
 
@@ -74,9 +77,9 @@ class PublicController extends Controller
         $part_time = JobData::with('company', 'category', 'location')->where('published', 1)->where('job_nature', 'Part Time')->get();
         $featured = JobData::with('company', 'category', 'location')->where('published', 1)->latest('like')->get();
         return response()->json([
-            'full_time_jobs' => $full_time,
-            'part_time_jobs' => $part_time,
-            'featured_jobs' => $featured,
+            'full_time' => JobDataResource::collection($full_time),
+            'part_time' => JobDataResource::collection($part_time),
+            'featured' => JobDataResource::collection($featured),
         ], 200);
     }
     public function jobs()
@@ -85,21 +88,21 @@ class PublicController extends Controller
             $query->take(3);
         }])->latest('updated_at')->take(4)->get();
         return response()->json([
-            'categories' => $categories,
+            'categories' => CategoryResource::collection($categories),
         ], 200);
     }
     public function testimonial()
     {
         $testimonials = Testimonial::where('published', 1)->get();
         return response()->json([
-            'testimonials' => $testimonials,
+            'testimonials' => TestimonialResource::collection($testimonials),
         ], 200);
     }
     public function search(Request $request)
     {
         $jobs = JobData::where('published', 1)->where('title', $request->Keyword)->orWhere('category_id', $request->category_id)->orWhere('location_id', $request->location_id)->get();
         return response()->json([
-            'jobs' => $jobs,
+            'jobs' => JobDataResource::collection($jobs),
         ], 200);
     }
     public function job_apply(Request $request)
@@ -137,7 +140,7 @@ class PublicController extends Controller
     {
         $jobs = JobData::where('category_id', $category->id)->where('published', 1)->get();
         return response()->json([
-            'jobs' => $jobs,
+            'jobs' => JobDataResource::collection( $jobs),
         ], 200);
     }
     public function newsLetter(Request $request)
