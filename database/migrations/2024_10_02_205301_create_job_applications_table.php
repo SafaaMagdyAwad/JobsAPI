@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name',30);
             $table->string('email',50);
+            $table->string('file_path')->default("assets/cv");
             $table->string('website',100);
             $table->string('cv',30);
             $table->text('cover_litter')->nullable();

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('image');
+            $table->string('file_path')->default("assets/images/jobs");
             $table->text('description');
             $table->text('responsability');
             $table->enum('job_nature',['Full Time','Part Time']);

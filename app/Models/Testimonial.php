@@ -12,6 +12,7 @@ class Testimonial extends Model
         'name',
         'job',
         'image',
+        'file_path',
         'message',
         'published',
     ];

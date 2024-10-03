@@ -13,6 +13,7 @@ class JobApplication extends Model
         'email',
         'website',
         'cv',
+        'file_path',
         'cover_litter',
         'job_id',
     ];

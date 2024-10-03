@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('job');
             $table->text('message');
             $table->string('image');
+            $table->string('file_path')->default("assets/images/testimonials");
             $table->boolean('published')->default(0);
             $table->timestamps();
         });

@@ -11,6 +11,7 @@ class JobData extends Model
     protected $fillable = [
         'title',
         'image',
+        'file_path',
         'description',
         'responsability',
         'qualification',
